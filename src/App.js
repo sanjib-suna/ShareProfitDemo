@@ -16,8 +16,8 @@ export default class App extends React.Component {
       initalList:[],
       enterAmount:'', 
       finalList:[],
-      totalInvested:45.6,
-      totalProfit:50.9 
+      totalInvested:0.0,
+      totalProfit:0.9 
     };
    
   }
@@ -55,10 +55,7 @@ export default class App extends React.Component {
 
   console.log('filteredList'+JSON.stringify(filterList));
  
-
-
-  //buy sorted
-
+  //buy initial list sorting
   const buyFiltered = [...filterList].sort((a, b) => {
     return ( (a.Buy) -(b.Buy) );
   });
@@ -66,11 +63,12 @@ export default class App extends React.Component {
   console.log('Buysorted'+JSON.stringify(buyFiltered));
 
 
+  //enter amount not added greater than buying value
   var lastList = []
-  var checkDemoValue = 0.0
+  var checkValueBuy = 0.0
   for (let index = 0; index < buyFiltered.length; index++) {
-    checkDemoValue = checkDemoValue+buyFiltered[index].Buy
-       if(checkDemoValue <= x){
+    checkValueBuy = checkValueBuy+buyFiltered[index].Buy
+       if(checkValueBuy <= x){
          lastList.push(buyFiltered[index])
        }
        
@@ -79,7 +77,7 @@ export default class App extends React.Component {
 
 
  
-//final soted list
+//final soted list to show profit in increasing mode
   const sorted = [...lastList].sort((a, b) => {
     return ((b.Sell-b.Buy) - (a.Sell-a.Buy));
   });
@@ -153,8 +151,13 @@ export default class App extends React.Component {
                 >
                  <Text style = {styles.submitButtonText}> CALCULATE </Text>
               </TouchableOpacity>    
-      {
-         <View>
+      
+      
+       {this.state.finalList.length > 0
+
+       ?
+        
+        <View>
             
             <Text style={{fontSize:16,marginStart:20,fontWeight:'bold',marginTop:10}}>{'Invested Share'}</Text>
        
@@ -195,6 +198,7 @@ export default class App extends React.Component {
 
                </View>  
                
+               : null
                
                }
 
