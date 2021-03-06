@@ -22,9 +22,13 @@ export default class App extends React.Component {
    
   }
   
+<<<<<<< HEAD
   //this is ny sanjib hjfj
 
   //this is sanjib demo
+=======
+  //this is ny sanjib demos
+>>>>>>> dab9832006e42431f226dcc492d0887944bba50c
 
  componentDidMount(){
     this.setState({
