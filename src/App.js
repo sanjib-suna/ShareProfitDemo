@@ -22,7 +22,7 @@ export default class App extends React.Component {
    
   }
   
-  //this is ny sanjib
+  //this is ny sanjib demos
 
  componentDidMount(){
     this.setState({
